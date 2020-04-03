@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <h:outputStylesheet library="css" name="table.css"  />
+</h:head>
+<h:body>
+   <h1>Book list</h1>
+    <h:form>
+        Price range from <h:inputText value="#{display.minimumPrice}" >
+                        <f:ajax event="change" render="data-table"/>
+                        </h:inputText>
+        <h:inputText value="#{display.maximumPrice}"  > <f:ajax event="change" render="data-table"/></h:inputText> <br/>
+        Author <h:inputText value="#{display.author}" > <f:ajax event="change" render="data-table"/></h:inputText> <br/>
+        Hide Categories
+        <h:selectManyCheckbox value="#{display.typesToHide}" >
+            <f:selectItems value="#{display.getBookTypes()}" var="type"
+                           itemValue="#{type}" itemLabel="#{type.label}" />
+            <f:ajax event="change" render="data-table" />
+        </h:selectManyCheckbox> <br/>
+        Select currency:
+        <h:selectOneMenu value="#{display.currency}" >
+            <f:selectItems value="#{display.getCurrencyTypes()}" var="type" itemValue="#{type}" />
+            <f:ajax render="data-table" event="change" /> </h:selectOneMenu> <br/>
+   <h:dataTable value="#{display.getBookList()}" var="book" id="data-table"
+                styleClass="order-table"
+                headerClass="order-table-header"
+                rowClasses="order-table-odd-row,order-table-even-row"
+   >
+       <h:column>
+           <f:facet name="header">Add to cart</f:facet>
+           <h:selectBooleanCheckbox value="#{book.selectedCategories}" />
+       </h:column>
+      <h:column >
+          <f:facet name = "header">Title</f:facet>
+          <h:outputText value="#{book.title}" />
+   </h:column>
+   <h:column>
+       <f:facet name = "header">Author</f:facet>
+       <h:outputText value="#{book.author}" />
+   </h:column>
+      <h:column >
+          <f:facet name = "header">Book type</f:facet>
+          <h:outputText value="#{book.type.label}" />
+      </h:column>
+      <h:column>
+          <f:facet name = "header">Price</f:facet>
+          <h:outputText value="#{book.price}" />
+      </h:column>
+       <h:column>
+           <f:facet name = "header">Original currency</f:facet>
+           <h:outputText value="#{book.currency}" />
+       </h:column>
+      <h:column >
+          <f:facet name = "header">Pages</f:facet>
+          <h:outputText value="#{book.pages}" />
+      </h:column>
+   </h:dataTable>
+    <h:commandButton value="submit" action="cart" />
+    </h:form>
+</h:body>
+</html>

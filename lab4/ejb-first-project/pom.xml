@@ -14,4 +14,55 @@
         <module>ejb3-server-impl</module>
         <module>ejb3-server-war</module>
     </modules>
+
+    <properties>
+        <root.dir>${project.basedir}</root.dir>
+
+        <jboss.home.name>WILDFLY_HOME</jboss.home.name>
+        <product.name>WildFly</product.name>
+        <version.server.bom>18.0.1Final</version.server.bom>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <linkXRef>false</linkXRef>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>4.5.4</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wildfly.bom</groupId>
+                <artifactId>wildfly-javaee8-with-tools</artifactId>
+                <version>18.0.0.Beta1</version>
+                <type>pom</type>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins />
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.wildfly.plugins</groupId>
+                    <artifactId>wildfly-maven-plugin</artifactId>
+                    <version>2.0.0.Final</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-ejb-plugin</artifactId>
+                    <version>${version.ejb.plugin}</version>
+                    <configuration>
+                        <ejbVersion>3.2</ejbVersion>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>

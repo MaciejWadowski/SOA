@@ -60,6 +60,7 @@
       <groupId>pl.agh.kis.edu</groupId>
       <artifactId>ejb3-server-impl</artifactId>
       <version>1.0</version>
+      <scope>compile</scope>
     </dependency>
   </dependencies>
 
