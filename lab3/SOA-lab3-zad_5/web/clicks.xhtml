@@ -7,14 +7,12 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
-
+    <h:outputScript library="javax.faces" name="jsf.js" target="head" />
+    <h:outputStylesheet library="css" name="style.css" target="head"/>
 </h:head>
 <h:body>
-    Imie : <h:outputText value="#{form.name}" /> <br />
-    Nazwisko : <h:outputText value="#{form.email}" /><br />
-    Wiek : <h:outputText value="#{form.age}" /><br />
-    Płeć <h:outputText value="#{form.sex}" /><br />
-    Wykształcenie : <h:outputText value="#{form.degree}" /> <br />
-    Wzrost :  <h:outputText value="#{form.heigth}" /> <br />
+    <h:outputLink value="index.xhtml">Wróć do formularza</h:outputLink>
+    <h2>Clicks in the banner count</h2>
+    <h:outputText value="#{banner.clicks}" />
 </h:body>
 </html>

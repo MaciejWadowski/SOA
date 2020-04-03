@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <h:outputScript library="javax.faces" name="jsf.js" target="head" />
+    <h:outputStylesheet library="css" name="style.css" target="head"/>
+</h:head>
+<h:body>
+    <h:outputLink value="clicks.xhtml">Zobacz ilość kliknięć</h:outputLink>
+    Imie : <h:outputText value="#{form.name}" /> <br />
+    Nazwisko : <h:outputText value="#{form.email}" /><br />
+    Wiek : <h:outputText value="#{form.age}" /><br />
+    Płeć <h:outputText value="#{form.sex.getLabel()}" /><br />
+    Wykształcenie : <h:outputText value="#{form.degree}" /> <br />
+    Wzrost :  <h:outputText value="#{form.height}" /> <br />
+
+    <h:panelGroup rendered="#{form.sex.getValue() eq 1}"><h:outputText rendered="#{form.sex.getValue() eq 1}" value="Obwód klatki:  #{form.chestCircumference} cm" /><br /></h:panelGroup>
+    <h:panelGroup rendered="#{form.sex.getValue() eq 1}"><h:outputText rendered="#{form.sex.getValue() eq 1}" value="Obwód pasa:  #{form.hisWaistCircumference} cm" /><br /></h:panelGroup>
+
+    <h:panelGroup rendered="#{form.sex.getValue() eq 2}"><h:outputText rendered="#{form.sex.getValue() eq 2}" value="Obwód biustu:  #{form.breast} cm" /><br /></h:panelGroup>
+    <h:panelGroup rendered="#{form.sex.getValue() eq 2}"><h:outputText rendered="#{form.sex.getValue() eq 2}" value="Wielkość miseczki:  #{form.cupSize} cm" /><br /></h:panelGroup>
+    <h:panelGroup rendered="#{form.sex.getValue() eq 2}"> <h:outputText rendered="#{form.sex.getValue() eq 2}" value="Talia:  #{form.herWaistCircumference} cm" /><br /></h:panelGroup>
+    <h:panelGroup rendered="#{form.sex.getValue() eq 2}"> <h:outputText rendered="#{form.sex.getValue() eq 2}" value="Biodra:  #{form.hips} cm" /><br /></h:panelGroup>
+
+    <h:outputText  value="Ile jesteś w stanie przeznaczyć miesięcznie na zakup ubrania?:  #{form.questionAboutMoney} cm" /> <br />
+    <h:outputText  value="Jak często dokonujesz zakupu ubrania?:  #{form.questionAboutBuyingClothesFrequency} cm" /> <br />
+    <h:outputText  value="W jakich kolorach preferujesz ubrania?:  #{form.questionAboutClothesColour} cm" /> <br />
+    <h:panelGroup rendered="#{form.sex.getValue() eq 1}"><h:outputText rendered="#{form.sex.getValue() eq 1}" value="Jakiego rodzaju ubrania kupujesz?:  #{form.questionAboutKindOfClothesHim} cm" /><br /></h:panelGroup>
+    <h:panelGroup rendered="#{form.sex.getValue() eq 2}"><h:outputText rendered="#{form.sex.getValue() eq 2}" value="Jakiego rodzaju ubrania kupujesz?:  #{form.questionAboutKindOfClothesHer} cm" /><br /></h:panelGroup>
+
+    <h:commandButton action="#{banner.increment()}" value="#{banner.getRandomAdvertise()}"  styleClass="button"/>
+</h:body>
+</html>

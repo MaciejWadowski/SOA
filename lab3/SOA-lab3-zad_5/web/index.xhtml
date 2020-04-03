@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+   <h:outputScript library="javax.faces" name="jsf.js" target="head" />
+   <h:outputStylesheet library="css" name="style.css" target="head"/>
+</h:head>
+<h:body>
+   <h:outputLink value="clicks.xhtml">Zobacz ilość kliknięć</h:outputLink>
+   <h:form>
+      Imie : <h:inputText id="name" value="#{form.name}" required="true" requiredMessage="Wymagane imie!"/>
+         <h:message for="name" /><br />
+      E-mail: <h:inputText id="email" value="#{form.email}" required="true" requiredMessage="Wymagany email" validatorMessage="Nieprawidlowy adres e-mail!" ><f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/></h:inputText><h:message for="email"/><br />
+      Wiek : <h:inputText id="age" value="#{form.age}" validatorMessage="Nieprawidłowy wiek!" ><f:validateLongRange minimum="1" maximum="60" /></h:inputText><h:message for="age"/><br />
+      Płeć <h:selectOneMenu value="#{form.sex}" > <f:selectItems value="#{form.getSexValues()}" var="sex" itemValue="#{sex}" itemLabel="#{sex.getLabel()}"/>  <f:ajax event="change" render="panel" /> </h:selectOneMenu>
+      Wykształcenie : <h:inputText value="#{form.degree}" /> <br />
+      Wzrost :  <h:inputText id="height" value="#{form.height}" required="true" requiredMessage="Wymagany wzrost!" validator="#{form.validateHeight}" validatorMessage="Nieprawidłowy wzrost!"/><h:message for="height"/><br />
+      <h:panelGroup id="panel" layout="block">
+         <!--
+===================================FOR HIM ==================================================================
+ -->
+      <h:panelGroup  rendered="#{form.sex.getValue() eq 1}" layout="block">Obwód klatki<h:inputText value="#{form.chestCircumference}" rendered="#{form.sex.getValue() eq 1}"  /><br /></h:panelGroup>
+      <h:panelGroup  rendered="#{form.sex.getValue() eq 1}"  layout="block">Obwód pasa <h:inputText value="#{form.hisWaistCircumference}" rendered="#{form.sex.getValue() eq 1}"  /> <br/></h:panelGroup>
+
+         <!--
+===================================FOR HER ==================================================================
+      -->
+      <h:panelGroup rendered="#{form.sex.getValue() eq 2}" layout="block" >Obwód biustu<h:inputText value="#{form.breast}" rendered="#{form.sex.getValue() eq 2}" /><br /></h:panelGroup>
+      <h:panelGroup rendered="#{form.sex.getValue() eq 2}"  layout="block">Wielkość miseczki <h:selectOneMenu value="#{form.cupSize}" rendered="#{form.sex.getValue() eq 2}">
+         <f:selectItems value="#{form.getCupSizes()}" var="cup" itemValue="#{cup}" itemLabel="#{cup}" />
+      </h:selectOneMenu><br /></h:panelGroup>
+      <h:panelGroup rendered="#{form.sex.getValue() eq 2}" layout="block" >Talia <h:inputText value="#{form.herWaistCircumference}" rendered="#{form.sex.getValue() eq 2}" /><br/></h:panelGroup>
+      <h:panelGroup rendered="#{form.sex.getValue() eq 2}"  layout="block">Biodra <h:inputText value="#{form.hips}" rendered="#{form.sex.getValue() eq 2}" /><br/></h:panelGroup>
+      </h:panelGroup>
+      <h:commandButton action="question" value="Wyślij"/>
+   </h:form>
+   <h:commandButton styleClass="button" action="#{banner.increment()}" value="#{banner.getRandomAdvertise()}"/>
+</h:body>
+</html>

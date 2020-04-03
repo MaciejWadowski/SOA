@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <h:outputScript library="javax.faces" name="jsf.js" target="head" />
+</h:head>
+<h:body>
+    <h:outputLink value="clicks.xhtml">Zobacz ilość kliknięć</h:outputLink>
+    <h:form>
+        Ile jesteś w stanie przeznaczyć miesięcznie na zakup ubrania?
+        <h:selectOneMenu value="#{form.questionAboutMoney}">
+            <f:selectItem itemValue="do 100zł" itemLabel="do 100zł"/>
+            <f:selectItem itemValue="100-500zł"  itemLabel="100-500zł"/>
+            <f:selectItem itemValue="500-1000zł" itemLabel="500-1000zł" />
+            <f:selectItem itemValue="powyżej 1000zł" itemLabel="powyżej 1000zł"/>
+        </h:selectOneMenu> <br />
+        Jak często dokonujesz zakupu ubrania?
+        <h:selectOneMenu value="#{form.questionAboutBuyingClothesFrequency}">
+            <f:selectItem itemValue="Codziennie" itemLabel="Codziennie"/>
+            <f:selectItem itemValue="Raz w tygodniu" itemLabel="Raz w tygodniu"/>
+            <f:selectItem itemValue="Raz w miesiącu" itemLabel="Raz w miesiącu"/>
+            <f:selectItem itemValue="Kilka razy w roku" itemLabel="Kilka razy w roku"/>
+        </h:selectOneMenu> <br/>
+        W jakich kolorach preferujesz ubrania?
+        <h:selectOneMenu value="#{form.questionAboutClothesColour}">
+            <f:selectItem itemLabel="Kolorowo-jaskrawych" itemValue="Kolorowo-jaskrawych"/>
+            <f:selectItem itemLabel="Stonowanych szarościach" itemValue="Stonowanych szarościach"/>
+            <f:selectItem itemLabel="W czerni i bieli" itemValue="W czerni i bieli"/>
+            <f:selectItem itemLabel="W samej czerni" itemValue="W samej czerni"/>
+        </h:selectOneMenu> <br/>
+        Jakiego rodzaju ubrania kupujesz
+        <h:selectOneMenu rendered="#{form.sex.getValue() eq 2}" value="#{form.questionAboutKindOfClothesHer}">
+            <f:selectItem itemLabel="garsonki" itemValue="garsonki"/>
+            <f:selectItem itemLabel="bluzki" itemValue="bluzki"/>
+            <f:selectItem itemLabel="spódniczki" itemValue="spódniczki"/>
+            <f:selectItem itemLabel="spodnie" itemValue="spodnie"/>
+        </h:selectOneMenu>
+        <h:selectOneMenu rendered="#{form.sex.getValue() eq 1}" value="#{form.questionAboutKindOfClothesHim}" >
+            <f:selectItem itemLabel="spodnie" itemValue="spodnie"/>
+            <f:selectItem itemLabel="spodenki" itemValue="spodenki"/>
+            <f:selectItem itemValue="garnitury" itemLabel="garnitury"/>
+            <f:selectItem itemLabel="koszule"  itemValue="koszule"/>
+            <f:selectItem itemValue="krawaty" itemLabel="krawaty"/>
+        </h:selectOneMenu><br/>
+        <h:commandButton action="finish" value="Wyślij"/>
+    </h:form>
+    <h:commandButton action="#{banner.increment()}" styleClass="button" value="#{banner.getRandomAdvertise()}"/>
+</h:body>
+</html>
