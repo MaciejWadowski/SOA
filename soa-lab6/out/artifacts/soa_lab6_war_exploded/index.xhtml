@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <h:outputStylesheet library="css" name="table.css"  />
+</h:head>
+<h:body>
+   <h:outputLink value="books.xhtml" >Books page</h:outputLink> <br />
+   <h:outputLink value="authors.xhtml" >Authors page</h:outputLink> <br />
+   <h:outputLink value="users.xhtml" >Users page</h:outputLink> <br />
+   <br />
+   <hr />
+   <h:form>
+      <h:outputText value="Wypozycz ksiazke" /> <br />
+      <h:selectOneMenu value="#{borrowBean.borrowBookId}" >
+         <f:selectItems value="#{borrowBean.getAvailableBooks()}" var="book" itemValue="#{book.id}" itemLabel="#{book.name}" />
+      </h:selectOneMenu>
+      <h:selectOneMenu value="#{borrowBean.borrowUserId}" >
+         <f:selectItems value="#{users.getUserList()}" var="user" itemValue="#{user.id}" itemLabel="#{user.name}" />
+      </h:selectOneMenu>
+      <h:commandButton value="Wypozycz ksiazke" action="#{borrowBean.borrow()}" />
+   </h:form>
+</h:body>
+</html>

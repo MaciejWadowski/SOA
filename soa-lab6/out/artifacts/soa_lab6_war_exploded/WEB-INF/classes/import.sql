@@ -1,0 +1,117 @@
+-- authors
+insert into authors (full_name) values("Arthur Conan Doyle");
+insert into authors (full_name) values("Agatha Christie");
+insert into authors (full_name) values("William Shakespeare");
+insert into authors (full_name) values("Peter Baker");
+insert into authors (full_name) values("Satyarth Nayak");
+insert into authors (full_name) values ("Stephen King");
+insert into authors (full_name) values("Tridip Suhrud");
+insert into authors (full_name) values("Ashis Ray");
+
+-- categories
+insert into categories (type) values( "Art & Music");
+insert into categories (type) values("Biography");
+insert into categories (type) values( "Action and Adventure");
+insert into categories (type) values( "Drama");
+insert into categories (type) values("Fable");
+insert into categories (type) values("Fiction");
+insert into categories (type) values( "Nonfiction");
+insert into categories (type) values( "Crime and Detective");
+insert into categories (type) values("Fairy Tale");
+insert into categories (type) values( "Fan-fiction");
+insert into categories (type) values("Fantasy");
+insert into categories (type) values( "Horror");
+insert into categories (type) values("Humor");
+insert into categories (type) values( "Legend");
+
+-- books
+
+insert into books ( author_id, category_id, name, isbn) values (1, 8, "The Adventure of the Blue Carbuncle","123123");
+insert into books ( author_id, category_id, name, isbn) values ( 1, 8, "The Adventure of the Reigate Squire","12313323");
+insert into books (author_id, category_id, name, isbn) values ( 2, 8, "And There Were None","12223123");
+insert into books ( author_id, category_id, name, isbn) values ( 2, 8, "Murder on The Orient Express","12322123");
+insert into books ( author_id, category_id, name, isbn) values ( 3, 4, "Hamlet","12553123");
+insert into books ( author_id, category_id, name, isbn) values ( 3, 4, "The Tragedy of Julius Caesar","12316623");
+insert into books ( author_id, category_id, name, isbn) values ( 3, 4, "The Tragedy of Romeo and Juliet","12333123");
+insert into books (author_id, category_id, name, isbn) values ( 4, 2, "Obama-The Call of History","12314423");
+insert into books (author_id, category_id, name, isbn) values ( 5, 10, "Sridevi: Girl Women Superstar","1231600623");
+insert into books ( author_id, category_id, name, isbn) values (6, 12, "The Shining","12313123");
+insert into books ( author_id, category_id, name, isbn) values ( 6, 3, "The Green Mile","12312553");
+insert into books ( author_id, category_id, name, isbn) values ( 6, 12, "Mr. Mercedes","12773123");
+insert into books ( author_id, category_id, name, isbn) values (6, 11, "Dallas '63","12399123");
+insert into books ( author_id, category_id, name, isbn) values ( 6, 12, "It","000123123");
+insert into books (author_id, category_id, name, isbn) values (7, 7, "The Diary of Manu Gandhi","12322166623");
+insert into books (author_id, category_id, name, isbn) values ( 8, 7, "Laid to Rest: The Controversy Over Subhas Chandra Bose’s Death","12314923");
+insert into books (author_id, category_id, name, isbn) values (8, 7, "Cricket World Cup: The Indian Challenge","12663123");
+insert into books (author_id, category_id, name, isbn) values (5, 1, "asdasdassaddasdasadsads","1266310023");
+
+-- users
+insert into users (full_name) values("ADMIN");
+insert into users (full_name) values("John Smith");
+insert into users (full_name) values("Bob Smith");
+insert into users (full_name) values("Noah Olivia");
+insert into users (full_name) values("Maria Rodriguez");
+insert into users (full_name) values("Maria Hernandez");
+insert into users (full_name) values("James Johnson");
+insert into users (full_name) values("Isaac Newton");
+insert into users (full_name) values("Claudie O'hearn");
+
+-- catalog
+insert into catalog (book_id, is_booked) values(1, 0);
+insert into catalog (book_id, is_booked) values(1, 0);
+insert into catalog (book_id, is_booked) values(1, 0);
+insert into catalog (book_id, is_booked) values(2, 0);
+insert into catalog (book_id, is_booked) values(2, 0);
+insert into catalog (book_id, is_booked) values(2, 0);
+insert into catalog (book_id, is_booked) values(2, 0);
+insert into catalog (book_id, is_booked) values(3, 0);
+insert into catalog (book_id, is_booked) values(3, 0);
+insert into catalog (book_id, is_booked) values(3, 0);
+insert into catalog (book_id, is_booked) values(3, 0);
+insert into catalog (book_id, is_booked) values(4, 0);
+insert into catalog (book_id, is_booked) values(4, 0);
+insert into catalog (book_id, is_booked) values(4, 0);
+insert into catalog (book_id, is_booked) values(4, 0);
+insert into catalog (book_id, is_booked) values(4, 0);
+insert into catalog (book_id, is_booked) values(5, 0);
+insert into catalog (book_id, is_booked) values(5, 0);
+insert into catalog (book_id, is_booked) values(6, 0);
+insert into catalog (book_id, is_booked) values(6, 0);
+insert into catalog (book_id, is_booked) values(6, 0);
+insert into catalog (book_id, is_booked) values(6, 0);
+insert into catalog (book_id, is_booked) values(7, 0);
+insert into catalog (book_id, is_booked) values(7, 0);
+insert into catalog (book_id, is_booked) values(7, 0);
+insert into catalog (book_id, is_booked) values(7, 0);
+insert into catalog (book_id, is_booked) values(7, 0);
+insert into catalog (book_id, is_booked) values(7, 0);
+insert into catalog (book_id, is_booked) values(7, 0);
+insert into catalog (book_id, is_booked) values(7, 0);
+insert into catalog (book_id, is_booked) values(8, 0);
+insert into catalog (book_id, is_booked) values(9, 0);
+insert into catalog (book_id, is_booked) values(10, 0);
+insert into catalog (book_id, is_booked) values(10, 0);
+insert into catalog (book_id, is_booked) values(10, 0);
+insert into catalog (book_id, is_booked) values(10, 0);
+insert into catalog (book_id, is_booked) values(10, 0);
+insert into catalog (book_id, is_booked) values(10, 0);
+insert into catalog (book_id, is_booked) values(11, 0);
+insert into catalog (book_id, is_booked) values(11, 0);
+insert into catalog (book_id, is_booked) values(11, 0);
+insert into catalog (book_id, is_booked) values(11, 0);
+insert into catalog (book_id, is_booked) values(12, 0);
+insert into catalog (book_id, is_booked) values(12, 0);
+insert into catalog (book_id, is_booked) values(12, 0);
+insert into catalog (book_id, is_booked) values(12, 0);
+insert into catalog (book_id, is_booked) values(15, 0);
+insert into catalog (book_id, is_booked) values(15, 0);
+insert into catalog (book_id, is_booked) values(15, 0);
+insert into catalog (book_id, is_booked) values(15, 0);
+insert into catalog (book_id, is_booked) values(16, 0);
+insert into catalog (book_id, is_booked) values(16, 0);
+insert into catalog (book_id, is_booked) values(17, 0);
+insert into catalog (book_id, is_booked) values(17, 0);
+insert into catalog (book_id, is_booked) values(17, 0);
+insert into catalog (book_id, is_booked) values(17, 0);
+insert into catalog (book_id, is_booked) values(18, 0);
+insert into catalog (book_id, is_booked) values(18, 0);

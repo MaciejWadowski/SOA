@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <h:outputStylesheet library="css" name="table.css"  />
+</h:head>
+<h:body>
+    <h:form>
+        Title : <h:inputText value="#{authors.titleFilter}" />
+        <h:selectOneMenu value="#{authors.titleFilterType}">
+            <f:selectItems value="#{front.getFiltersForString()}" />
+        </h:selectOneMenu> <br />
+        Author : <h:inputText value="#{authors.authorFilter}" />
+        <h:selectOneMenu value="#{authors.authorFilterType}">
+            <f:selectItems value="#{front.getFiltersForString()}" />
+        </h:selectOneMenu> <br />
+        User : <h:inputText value="#{authors.userFilter}" />
+        <h:selectOneMenu value="#{authors.userFilterType}">
+            <f:selectItems value="#{front.getFiltersForString()}" />
+        </h:selectOneMenu> <br />
+        Category : <h:selectManyCheckbox value="#{authors.categoryFilter}" >
+        <f:selectItems value="#{front.getCategories()}" var="category" itemValue="#{category.id}" itemLabel="#{category.type}" />
+    </h:selectManyCheckbox> <br />
+        Borrow start date (dd-MM-yyyy) : <h:inputText value="#{authors.startDateFilter}" /><br />
+        Borrow end date (dd-MM-yyyy) : <h:inputText value="#{authors.endDateFilter}" /><br />
+        <h:commandButton value="Narzuć filtry">
+            <f:ajax render="author-table"  execute="@form"/>
+        </h:commandButton>
+    </h:form>
+    <br />
+    <hr />
+    <h:form >
+    <h:outputText value="Najpopularniejszy autor: " /> <br/>
+    <h:outputText id="popular-author" value="#{authors.mostPopularAuthor}" />
+        <h:commandButton value="Wyswietl autora">
+            <f:ajax render="popular-author"  execute="@form"/>
+        </h:commandButton>
+    </h:form>
+    <br />
+    <hr />
+    <h:dataTable value="#{authors.getAuthorList()}" var="author" id="author-table"
+                 styleClass="order-table"
+                 headerClass="order-table-header"
+                 rowClasses="order-table-odd-row,order-table-even-row"
+    >
+        <h:column >
+            <f:facet name = "header">Id</f:facet>
+            <h:outputText value="#{author.id}" />
+        </h:column>
+        <h:column >
+            <f:facet name = "header">Name</f:facet>
+            <h:outputText value="#{author.name}" />
+        </h:column>
+    </h:dataTable>
+    <br />
+    <hr />
+    <h:outputText value="Usun rekord" />
+    <h:form>
+        ID: <h:inputText value="#{authors.authorIdToDelete}" /> <br />
+        <h:commandButton value="Usun Autora" action="#{authors.deleteRecord()}">
+            <f:ajax render="author-table" execute="@form"/>
+        </h:commandButton>
+    </h:form>
+    <br />
+    <hr />
+    <h:outputText value="Dodaj rekord" />
+    <h:form>
+       <h:inputText value="#{authors.newAuthor}" />
+        <h:commandButton value="dodaj autora" action="#{authors.addRecord()}">
+            <f:ajax render="author-table" execute="@form"/>
+        </h:commandButton>
+    </h:form>
+    <br />
+    <hr />
+    <h:outputText value="Zaktualizuj rekord" />
+    <h:form>
+        ID: <h:inputText value="#{authors.authorIdToUpdate}" /> <br />
+        <h:inputText value="#{authors.updateNameAuthor}" />
+        <h:commandButton value="Usun Ksiazke" action="#{authors.updateRecord()}">
+            <f:ajax render="author-table" execute="@form"/>
+        </h:commandButton>
+    </h:form>
+    <br />
+    <hr />
+</h:body>
+</html>
