@@ -1,0 +1,13 @@
+insert into user_film (name, age, avatar) values ('mmm', 12, LOAD_FILE('avatars/avatar1.png'));
+insert into user_film (name, age, avatar) values ('zzzz', 15, LOAD_FILE('avatars/zdj2.jpeg'));
+insert into user_film (name, age, avatar) values ('mmaaam', 18, LOAD_FILE('avatars/zdj3.jpeg'));
+insert into film (title, uri) values('Parasite', 'https://www.filmweb.pl/film/Parasite-2019-798143');
+insert into film (title, uri) values('Us', 'https://www.filmweb.pl/film/Parasite-2019-798143');
+insert into film (title, uri) values('BookSmart', 'https://www.filmweb.pl/film/Parasite-2019-798143');
+insert into film (title, uri) values('The Farewell', 'https://www.filmweb.pl/film/Parasite-2019-798143');
+insert into film (title, uri) values('Marriage Story', 'https://www.filmweb.pl/film/Historia+małżeńska-2019-818090');
+insert into JOIN_TABLE (user_id, film_id) values(1,1);
+insert into JOIN_TABLE (user_id, film_id) values(1,2);
+insert into JOIN_TABLE (user_id, film_id) values(1,3);
+insert into JOIN_TABLE (user_id, film_id) values(2,2);
+insert into JOIN_TABLE (user_id, film_id) values(2,3);
